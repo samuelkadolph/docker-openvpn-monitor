@@ -1,3 +1,5 @@
+FROM python:3.7-alpine3.9
+
 MAINTAINER samuel@kadolph.com
 
 ARG BUILD_DATE
@@ -8,8 +10,6 @@ LABEL org.label-schema.name="openvpn-monitor"
 LABEL org.label-schema.schema-version="1.0"
 LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.vcs-url="https://github.com/samuelkadolph/docker-openvpn-monitor"
-
-FROM python:3.7-alpine3.9
 
 RUN wget -O - https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz | tar -zxC /
 
