@@ -4,6 +4,7 @@ services:
 script:
   - make build
   - docker run --detach --name openvpn-monitor --publish 8080:80 samuelkadolph/openvpn-monitor
+  - sleep 3
   - curl http://localhost:8080 | grep "Example OpenVPN Status Monitor"
   - docker logs openvpn-monitor
   - docker kill openvpn-monitor
