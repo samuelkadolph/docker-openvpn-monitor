@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv sh
+
+if [ ! -s "/config/openvpn-monitor.conf" ]; then
+  cp "/openvpn-monitor/openvpn-monitor.conf.example" "/config/openvpn-monitor.conf"
+fi
