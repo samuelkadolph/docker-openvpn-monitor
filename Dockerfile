@@ -18,7 +18,7 @@ COPY root /
 RUN --mount=type=secret,id=MAXMIND_LICENSE_KEY /bin/download-geolite
 
 RUN mkdir /config /openvpn-monitor && \
-    wget -O - https://github.com/furlongm/openvpn-monitor/archive/9af350b.tar.gz | tar --strip-components=1 -zxC /openvpn-monitor && \
+    wget -O - https://github.com/furlongm/openvpn-monitor/archive/304203f36a7d7ce9ddb85d22a5134a747da0a5f3.tar.gz | tar --strip-components=1 -zxC /openvpn-monitor && \
     ln -s /config/openvpn-monitor.conf /openvpn-monitor/openvpn-monitor.conf && \
     touch /openvpn-monitor/openvpn-monitor.conf && \
     pip install gunicorn /openvpn-monitor
