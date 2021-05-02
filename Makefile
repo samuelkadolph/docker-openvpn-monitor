@@ -5,6 +5,9 @@ VCS_REF ?= `git rev-parse --short HEAD`
 default: build
 
 build:
-	docker build --build-arg BUILD_DATE=$(BUILD_DATE) --build-arg VCS_REF=$(VCS_REF) --tag $(IMAGE_NAME) .
+	docker build --build-arg "BUILD_DATE=$(BUILD_DATE)" --build-arg "VCS_REF=$(VCS_REF)" --build-arg "MAXMIND_LICENSE_KEY=$(MAXMIND_LICENSE_KEY)" --tag $(IMAGE_NAME) .
 
-.PHONY: build
+publish:
+	docker push $(IMAGE_NAME)
+
+.PHONY: build publish
