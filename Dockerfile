@@ -3,7 +3,6 @@ FROM python:3.9-alpine
 MAINTAINER samuel@kadolph.com
 
 ARG BUILD_DATE
-ARG MAXMIND_LICENSE_KEY
 ARG VCS_REF
 
 LABEL org.label-schema.build-date=$BUILD_DATE
@@ -14,17 +13,15 @@ LABEL org.label-schema.vcs-url="https://github.com/samuelkadolph/docker-openvpn-
 
 RUN wget -O - https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz | tar -zxC /
 
-RUN mkdir /var/lib/GeoIP && \
-    wget -O - "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz" | tar -zxC /var/lib/GeoIP && \
-    mv /var/lib/GeoIP/GeoLite2-City_*/GeoLite2-City.mmdb /var/lib/GeoIP/GeoLite2-City.mmdb
+COPY root /
+
+RUN --mount=type=secret,id=MAXMIND_LICENSE_KEY /bin/download-geolite
 
 RUN mkdir /config /openvpn-monitor && \
     wget -O - https://github.com/furlongm/openvpn-monitor/archive/9af350b.tar.gz | tar --strip-components=1 -zxC /openvpn-monitor && \
     ln -s /config/openvpn-monitor.conf /openvpn-monitor/openvpn-monitor.conf && \
     touch /openvpn-monitor/openvpn-monitor.conf && \
     pip install gunicorn /openvpn-monitor
-
-COPY root /
 
 EXPOSE 80
 
