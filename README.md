@@ -1,4 +1,4 @@
-## samuelkadolph/openvpn-monitor
+## samuelkadolph/docker-openvpn-monitor
 
 [![Build Status](https://img.shields.io/travis/samuelkadolph/docker-openvpn-monitor.svg)](https://travis-ci.com/samuelkadolph/docker-openvpn-monitor/ "Build Status")
 [![Docker Pulls](https://img.shields.io/docker/pulls/samuelkadolph/openvpn-monitor.svg?style=flat)](https://hub.docker.com/r/samuelkadolph/openvpn-monitor/ "Docker Pulls")
