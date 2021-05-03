@@ -8,6 +8,7 @@
 ### Usage
 
 ```
+docker run --detach --name=openvpn-monitor --restart unless-stopped --volume /app/openvpn-monitor:/config samuelkadolph/openvpn-monitor
 ```
 
-### Parameters
+Edit `/app/openvpn-monitor/openvpn-monitor.conf` and then restart the container.
