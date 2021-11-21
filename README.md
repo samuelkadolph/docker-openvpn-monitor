@@ -17,3 +17,14 @@ docker run --detach --name=openvpn-monitor \
 
 Edit `/app/openvpn-monitor/openvpn-monitor.conf` and then visit
 `http://localhost:8080/`.
+
+## MaxMind
+
+You will want to leave the `geoip_data=/var/lib/GeoIP/GeoLite2-City.mmdb` line
+in the config file as this docker image downloads the [MaxMind GeoLite2-City](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data)
+to that file.
+
+The GeoLite2-City database is updated every Tuesday. This image should be
+automatically built and pushed every Wednesday morning by 6:00 UTC. You might
+wish to have your docker container recreated at such time for the latest
+GeoLite2-City database.
