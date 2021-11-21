@@ -8,6 +8,6 @@ build:
 	docker buildx build --platform linux/amd64 --build-arg BUILD_DATE=$(BUILD_DATE) --build-arg VCS_REF=$(VCS_REF) --secret id=MAXMIND_LICENSE_KEY --tag $(IMAGE_NAME) .
 .PHONY: build
 
-publish:
+push:
 	docker push $(IMAGE_NAME)
-.PHONY: publish
+.PHONY: push
