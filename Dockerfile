@@ -1,7 +1,5 @@
 FROM python:3.9-alpine
 
-MAINTAINER samuel@kadolph.com
-
 ARG BUILD_DATE
 ARG VCS_REF
 
@@ -17,11 +15,11 @@ RUN mkdir /config /openvpn-monitor && \
 
 RUN --mount=type=secret,id=MAXMIND_LICENSE_KEY /bin/download-geolite
 
-LABEL org.label-schema.build-date=$BUILD_DATE
-LABEL org.label-schema.name="openvpn-monitor"
-LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.vcs-ref=$VCS_REF
-LABEL org.label-schema.vcs-url="https://github.com/samuelkadolph/docker-openvpn-monitor"
+LABEL org.opencontainers.image.authors="samuel@kadolph.com"
+LABEL org.opencontainers.image.created=$BUILD_DATE
+LABEL org.opencontainers.image.revision=$VCS_REF
+LABEL org.opencontainers.image.source="https://github.com/samuelkadolph/docker-openvpn-monitor"
+LABEL org.opencontainers.image.title="openvpn-monitor"
 
 EXPOSE 80
 
